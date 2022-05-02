@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+:root {
+  // font
+  --fs: 15px;
+  --ff: "Poppins", sans-serif;
+
+  //primary
+  --red: hsl(0, 78%, 62%);
+  --orange: hsl(34, 97%, 64%);
+  --cyan: hsl(180, 62%, 55%);
+  --blue: hsl(212, 86%, 64%);
+  //neutral
+  --very-dark-blue: hsl(234, 12%, 34%);
+  --grayish-blue: hsl(229, 6%, 66%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --white: white;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--ff);
+  font-size: var(--fs);
+  background-color: var(--very-light-gray);
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    width: 85%;
+    margin: 2rem auto;
+  }
+
+  .header {
+    text-align: center;
+    h1 {
+      color: var(--very-dark-blue);
+      font-size: 1.5rem;
+    }
+    span {
+      font-weight: 200;
+    }
+    p {
+      color: var(--grayish-blue);
+    }
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .card {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 5px;
+      box-shadow: 0px 5px 10px hsl(0, 0%, 80%);
+      h2 {
+        margin: 0;
+      }
+      p {
+        margin-top: 0.5rem;
+        color: var(--grayish-blue);
+      }
+    }
+    .card:nth-child(1) {
+      border-top: 4px solid var(--cyan);
+    }
+    .card:nth-child(2) {
+      border-top: 4px solid var(--red);
+    }
+    .card:nth-child(3) {
+      border-top: 4px solid var(--orange);
+    }
+    .card:nth-child(4) {
+      border-top: 4px solid var(--blue);
+    }
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.card-images {
+  display: block;
+  margin-left: auto;
+  filter: drop-shadow(0px 4px 2px #abb1ad);
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    .header {
+      h1,
+      p {
+        width: 50%;
+        margin: auto;
+      }
+      h1 {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+    }
+    .card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+
+      grid-template-areas:
+        ". teambuilder ."
+        "supervisor teambuilder calculator"
+        "supervisor karma calculator"
+        ". karma .";
+      .card:nth-child(1) {
+        grid-area: supervisor;
+      }
+      .card:nth-child(2) {
+        grid-area: teambuilder;
+      }
+      .card:nth-child(3) {
+        grid-area: karma;
+      }
+      .card:nth-child(4) {
+        grid-area: calculator;
+      }
+    }
+  }
+}
